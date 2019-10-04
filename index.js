@@ -3,4 +3,5 @@
  */
 'use strict';
 
-export {default as BrAddressForm} from './BrAddressForm.vue';
+export {default as BrQramIssueCredentialWizard}
+  from './BrQramIssueCredentialWizard.vue';

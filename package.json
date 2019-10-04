@@ -5,6 +5,8 @@
   "main": "index.js",
   "peerDependencies": {
     "bedrock-quasar": "^3.0.0",
+    "bedrock-vue-credential-creator-wizard": "^1.1.0",
+    "bedrock-vue-qram": "^1.0.0",
     "vue": "^2.5.16",
     "vuelidate": "^0.7.4"
   },
