@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <br-credential-creator-wizard
-      :block-next="blockNext"
-      :block-back="blockBack"
-      :block-finish="blockFinish"
-      :subject="subject"
-      :issuer="issuer"
-      :flow="steps"
-      :vocab="vocab"
-      :schema-map="schemaMap"
-      :templates="templates"
-      :welcome="welcome"
-      :review="review"
-      @next="next($event)"
-      @finish="finish($event)">
-      <template
-        #default="{currentStep, stepIndex}">
+  <br-credential-creator-wizard
+    :block-next="blockNext"
+    :block-back="blockBack"
+    :block-finish="blockFinish"
+    :subject="subject"
+    :issuer="issuer"
+    :flow="steps"
+    :vocab="vocab"
+    :schema-map="schemaMap"
+    :templates="templates"
+    :welcome="welcome"
+    :review="review"
+    @back="back($event)"
+    @next="next($event)"
+    @finish="finish($event)">
+    <template #default="{currentStep, stepIndex}">
+      <div class="br-qram-step-content">
         <br-qram-presenter
           v-if="stepIndex === 1"
           style="border: 1px solid #333; height: 300px; width: 300px"
@@ -33,9 +33,9 @@
           ref="scanner"
           :max-video-width="300"
           @result="scanResult($event)" />
-      </template>
-    </br-credential-creator-wizard>
-  </div>
+      </div>
+    </template>
+  </br-credential-creator-wizard>
 </template>
 
 <script>
@@ -184,6 +184,9 @@ export default {
         //this.$refs.scanner.scan();
       }
     },
+    back({currentStepIndex}) {
+      this.blockNext = (currentStepIndex === 3);
+    },
     next({currentStepIndex}) {
       this.blockNext = (currentStepIndex === 1);
     },
@@ -196,4 +199,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.br-qram-step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 </style>
